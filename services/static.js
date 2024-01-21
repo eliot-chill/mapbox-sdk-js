@@ -436,12 +436,11 @@ function encodePathOverlay(o) {
       return [c[1], c[0]];
     });
     var encodedPolyline = polyline.encode(reversedCoordinates);
+    result += '(' + encodeURIComponent(encodedPolyline) + ')';
   }
   else {
-    var encodedPolyline = o.polyline;
+    result += '(' +  o.polyline + ')';
   }
-  
-  result += '(' + encodeURIComponent(encodedPolyline) + ')';
   return result;
 }
 
