@@ -1,4 +1,4 @@
-# @mapbox/mapbox-sdk
+# @mapbox/mapbox-sdk - FORKED
 
 [![Build Status](https://travis-ci.com/mapbox/mapbox-sdk-js.svg?branch=main)](https://travis-ci.com/mapbox/mapbox-sdk-js)
 
