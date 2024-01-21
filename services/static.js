@@ -395,7 +395,8 @@ function encodeCustomMarkerOverlay(o) {
 
 function encodePathOverlay(o) {
   v.assertShape({
-    coordinates: v.required(v.arrayOf(v.coordinates)),
+    coordinates: v.arrayOf(v.coordinates),
+    polyline: v.string,
     strokeWidth: v.number,
     strokeColor: v.string,
     strokeOpacity: v.number,
@@ -429,11 +430,17 @@ function encodePathOverlay(o) {
   if (o.fillOpacity) {
     result += '-' + o.fillOpacity;
   }
-  // polyline expects each coordinate to be in reversed order: [lat, lng]
-  var reversedCoordinates = o.coordinates.map(function(c) {
-    return [c[1], c[0]];
-  });
-  var encodedPolyline = polyline.encode(reversedCoordinates);
+  if (o.coordinates) {
+    // polyline expects each coordinate to be in reversed order: [lat, lng]
+    var reversedCoordinates = o.coordinates.map(function(c) {
+      return [c[1], c[0]];
+    });
+    var encodedPolyline = polyline.encode(reversedCoordinates);
+  }
+  else {
+    var encodedPolyline = o.polyline;
+  }
+  
   result += '(' + encodeURIComponent(encodedPolyline) + ')';
   return result;
 }
