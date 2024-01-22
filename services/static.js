@@ -439,9 +439,7 @@ function encodePathOverlay(o) {
     result += '(' + encodeURIComponent(encodedPolyline) + ')';
   }
   else {
-    console.log(o.polyline)
     result += '(' +  o.polyline + ')';
-    console.log(result)
   }
   return result;
 }
